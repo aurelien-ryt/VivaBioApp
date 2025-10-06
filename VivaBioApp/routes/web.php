@@ -1,19 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InscriptionController;
+use App\Http\Controllers\ConnexionController;
 
-// Vues Générales
+// ------------------- Vues Générales ----------------------
 Route::get('/', function () {
-    return view("Page d'accueil");
+    return view('accueil'); // fichier : resources/views/accueil.blade.php
 });
 
-Route::get('/Inscription', function () {
-    return ("Page d'inscription");
-});
+// ------------------- Inscription --------------------
+Route::get('/Inscription', [InscriptionController::class, 'index'])->name('inscription.index');
+Route::get('/Inscription/{id}', [InscriptionController::class, 'show'])->name('inscription.show');
 
-Route::get('/SeConnecter', function () {
-    return ("Page de connexion ");
-});
+// ------------------- Connexion ----------------------
+Route::get('/Connexion', [ConnexionController::class, 'index'])->name('connexion.index');
+
 
 
 
@@ -27,7 +29,7 @@ Route::get('/Clt/{num}/Catalogue/Produit/{id}', function ($num, $id) {
 });
 
 Route::get('/Clt/{num}/Produit/{id}/Panier', function ($num, $id) {
-    return ("$id Ajoute un produit au panier l'article $id");
+    return ("$num Ajoute un produit au panier l'article $id");
 });
 
 Route::get('/Clt/{num}/Commande/{id}', function ($num, $id) {
@@ -43,7 +45,7 @@ Route::get('/Clt/{num}/Commande/Payer', function ($num) {
     return ('Payer la commande');
 });
 
-// -------------------Employés polyvalents  ----------------------
+// ------------------- Employés polyvalents  ----------------------
 
 Route::get('/EP/{num}/Catalogue', function ($num) {
     return ("vue catalogue de $num");
@@ -58,10 +60,11 @@ Route::get('EP/{num}/Stock/FicheProduit/{id}', function ($num, $id) {
 });
 
 
-Route::get('/EP/{num}/Commande', function () {
+Route::get('/EP/{num}/Commande', function ($num) {
     return ('Consulter la commande');
 });
 
+use App\Http\Controllers\StockController ;
 Route::get('EP/{num}/Stock', function ($num) {
     return view("Consulter l'état des stocks emp : $num");
 });
