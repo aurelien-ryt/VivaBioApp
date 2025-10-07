@@ -6,11 +6,13 @@ use App\Http\Controllers\ConnexionController;
 
 // ------------------- Vues Générales ----------------------
 Route::get('/', function () {
-    return view('accueil'); // fichier : resources/views/accueil.blade.php
+    return view('Accueil'); // fichier : resources/views/accueil.blade.php
 });
 
 // ------------------- Inscription --------------------
-Route::get('/Inscription', [InscriptionController::class, 'index'])->name('inscription.index');
+Route::get('/Inscription', [InscriptionController::class, 'index'])
+->name('inscription.index') ;
+//->where ($id', [0-9]+');
 Route::get('/Inscription/{id}', [InscriptionController::class, 'show'])->name('inscription.show');
 
 // ------------------- Connexion ----------------------
