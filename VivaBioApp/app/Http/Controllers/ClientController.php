@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    public function catalogue($num)
+    public function catalogue()
     {
-        return "vue catalogue de $num";
+        return view ("clt.Catalogue");
     }
 
     public function produit($num, $id)

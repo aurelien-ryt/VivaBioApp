@@ -6,15 +6,14 @@ use Illuminate\Http\Request;
 
 class EmployePolyvalentController extends Controller
 {
-    public function catalogue($num)
+    public function catalogue()
     {
-        return "vue catalogue de $num";
+        return view("ep.Catalogue");
     }
 
-    public function produit($num, $id)
-    {
-        return "En tant que $num, je consulte le produit $id";
-    }
+public function produit($num, $id)
+ { return "En tant que $num, je consulte le produit $id"; }
+   
 
     public function ficheProduit($num, $id)
     {

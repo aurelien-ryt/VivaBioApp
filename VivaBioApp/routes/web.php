@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ConnexionController;
+use App\Http\Controllers\EmployePolyvalentController;
 
 // ------------------- Vues Générales ----------------------
 Route::get('/', function () {
@@ -21,10 +23,8 @@ Route::get('/Connexion', [ConnexionController::class, 'index'])->name('connexion
 
 
 
-// ------------------- Clients ----------------------
-Route::get('/Clt/{num}/Catalogue', function ($num) {
-    return ("vue catalogue de $num");
-});
+// ------------------- Clients ---------------------- // penser a remettre {num}
+Route::get('/Clt/Catalogue' , [ClientController::class, 'catalogue'])->name('clt.Catalogue');
 
 Route::get('/Clt/{num}/Catalogue/Produit/{id}', function ($num, $id) {
     return ("En tant que $num , je consulte le produit $id");
@@ -49,13 +49,16 @@ Route::get('/Clt/{num}/Commande/Payer', function ($num) {
 
 // ------------------- Employés polyvalents  ----------------------
 
-Route::get('/EP/{num}/Catalogue', function ($num) {
-    return ("vue catalogue de $num");
-});
+
+Route::get('/EP/Catalogue',[EmployePolyvalentController::class, 'catalogue'])
+->name('ep.Catalogue');
+
 
 Route::get('/EP/{num}/Catalogue/Produit/{id}', function ($num, $id) {
-    return ("En tant que $num , je consulte le produit $id");
+    $message = "En tant que $num, je consulte le produit $id";
+    return view('Produit', compact('message'));
 });
+
 
 Route::get('EP/{num}/Stock/FicheProduit/{id}', function ($num, $id) {
     return view('Formulaire qui crée un nouvel article');
