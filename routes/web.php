@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InscriptionController;
 use App\Http\Controllers\ConnexionController;
 use App\Http\Controllers\EmployePolyvalentController;
+use App\Http\Controllers\CatalogueController;
 
 // ------------------- Vues Générales ----------------------
 Route::get('/', function () {
@@ -24,7 +25,7 @@ Route::get('/Connexion', [ConnexionController::class, 'index'])->name('connexion
 
 
 // ------------------- Clients ---------------------- // penser a remettre {num}
-Route::get('/Clt/Catalogue' , [ClientController::class, 'catalogue'])->name('clt.Catalogue');
+Route::get('/Clt/Catalogue' , [CatalogueController::class, 'catalogue_clt'])->name('clt.Catalogue');
 
 Route::get('/Clt/{num}/Catalogue/Produit/{id}', function ($num, $id) {
     return ("En tant que $num , je consulte le produit $id");
@@ -50,7 +51,7 @@ Route::get('/Clt/{num}/Commande/Payer', function ($num) {
 // ------------------- Employés polyvalents  ----------------------
 
 
-Route::get('/EP/Catalogue',[EmployePolyvalentController::class, 'catalogue'])
+Route::get('/EP/Catalogue',[CatalogueController::class, 'catalogue_ep'])
 ->name('ep.Catalogue');
 
 
@@ -84,7 +85,7 @@ Route::get('EP/{num}/Stock', function () {
 
 // -------------------Gestionnaire de stocks ---------------------- 
 
-Route::get('/Gest/{num}/Catalogue', function ($num) {
+Route::get('/Gest/{num}/Catalogue',[CatalogueController::class, 'catalogue_gest'] function ($num) {
     return ("vue catalogue de $num");
 });
 
