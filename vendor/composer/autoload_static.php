@@ -133,6 +133,7 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
             'Laravel\\Sail\\' => 13,
             'Laravel\\Prompts\\' => 16,
             'Laravel\\Pail\\' => 13,
+            'Laravel\\Breeze\\' => 15,
         ),
         'I' => 
         array (
@@ -437,6 +438,10 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         array (
             0 => __DIR__ . '/..' . '/laravel/pail/src',
         ),
+        'Laravel\\Breeze\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/breeze/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -533,12 +538,24 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
     );
 
     public static $classMap = array (
-        'App\\Http\\Controllers\\ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClientController.php',
-        'App\\Http\\Controllers\\ConnexionController' => __DIR__ . '/../..' . '/app/Http/Controllers/ConnexionController.php',
+        'App\\Http\\Controllers\\CommandeController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommandeController.php',
+        'App\\Http\\Controllers\\CommandeFournisseurController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommandeFournisseurController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\EmployePolyvalentController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmployePolyvalentController.php',
-        'App\\Http\\Controllers\\GestionnaireStockController' => __DIR__ . '/../..' . '/app/Http/Controllers/GestionnaireStockController.php',
-        'App\\Http\\Controllers\\InscriptionController' => __DIR__ . '/../..' . '/app/Http/Controllers/InscriptionController.php',
+        'App\\Http\\Controllers\\FournisseurController' => __DIR__ . '/../..' . '/app/Http/Controllers/FournisseurController.php',
+        'App\\Http\\Controllers\\HistoriqueMouvementController' => __DIR__ . '/../..' . '/app/Http/Controllers/HistoriqueMouvementController.php',
+        'App\\Http\\Controllers\\LigneCommandeFournisseurController' => __DIR__ . '/../..' . '/app/Http/Controllers/LigneCommandeFournisseurController.php',
+        'App\\Http\\Controllers\\LignePanierController' => __DIR__ . '/../..' . '/app/Http/Controllers/LignePanierController.php',
+        'App\\Http\\Controllers\\PanierController' => __DIR__ . '/../..' . '/app/Http/Controllers/PanierController.php',
+        'App\\Http\\Controllers\\ProduitController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProduitController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
+        'App\\Models\\Commande' => __DIR__ . '/../..' . '/app/Models/Commande.php',
+        'App\\Models\\CommandeFournisseur' => __DIR__ . '/../..' . '/app/Models/CommandeFournisseur.php',
+        'App\\Models\\Fournisseur' => __DIR__ . '/../..' . '/app/Models/Fournisseur.php',
+        'App\\Models\\HistoriqueMouvement' => __DIR__ . '/../..' . '/app/Models/HistoriqueMouvement.php',
+        'App\\Models\\LigneCommandeFournisseur' => __DIR__ . '/../..' . '/app/Models/LigneCommandeFournisseur.php',
+        'App\\Models\\LignePanier' => __DIR__ . '/../..' . '/app/Models/LignePanier.php',
+        'App\\Models\\Panier' => __DIR__ . '/../..' . '/app/Models/Panier.php',
+        'App\\Models\\Produit' => __DIR__ . '/../..' . '/app/Models/Produit.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -2948,6 +2965,12 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Laravel\\Breeze\\BreezeServiceProvider' => __DIR__ . '/..' . '/laravel/breeze/src/BreezeServiceProvider.php',
+        'Laravel\\Breeze\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallCommand.php',
+        'Laravel\\Breeze\\Console\\InstallsApiStack' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallsApiStack.php',
+        'Laravel\\Breeze\\Console\\InstallsBladeStack' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallsBladeStack.php',
+        'Laravel\\Breeze\\Console\\InstallsInertiaStacks' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallsInertiaStacks.php',
+        'Laravel\\Breeze\\Console\\InstallsLivewireStack' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallsLivewireStack.php',
         'Laravel\\Pail\\Console\\Commands\\PailCommand' => __DIR__ . '/..' . '/laravel/pail/src/Console/Commands/PailCommand.php',
         'Laravel\\Pail\\Contracts\\Printer' => __DIR__ . '/..' . '/laravel/pail/src/Contracts/Printer.php',
         'Laravel\\Pail\\File' => __DIR__ . '/..' . '/laravel/pail/src/File.php',
