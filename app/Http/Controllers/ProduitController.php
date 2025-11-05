@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProduitController extends Controller
 {
     /**
-     * Display a listing of the resource.
+    * Afficher la liste des ressources.
      */
     public function index()
     {
@@ -16,7 +16,7 @@ class ProduitController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Afficher le formulaire de création d'une nouvelle ressource.
      */
     public function create()
     {
@@ -24,7 +24,7 @@ class ProduitController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Stockez une ressource nouvellement créée dans le stockage.
      */
     public function store(Request $request)
     {
@@ -32,7 +32,7 @@ class ProduitController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Afficher la ressource spécifiée.
      */
     public function show(Produit $produit)
     {
@@ -40,7 +40,7 @@ class ProduitController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Afficher le formulaire de modification de la ressource spécifiée.
      */
     public function edit(Produit $produit)
     {
@@ -48,7 +48,7 @@ class ProduitController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Mettre à jour la ressource spécifiée dans le stockage.
      */
     public function update(Request $request, Produit $produit)
     {
@@ -56,7 +56,7 @@ class ProduitController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprimez la ressource spécifiée du stockage.
      */
     public function destroy(Produit $produit)
     {
