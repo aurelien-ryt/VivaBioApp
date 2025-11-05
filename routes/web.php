@@ -17,11 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-
 
 // Ces routes sont surement a revoir en raison de l'ajout de controlleurs
-
+/*
 // ------------------- Vues Générales ----------------------
 Route::get('/', function () {
     return view('Accueil'); // fichier : resources/views/accueil.blade.php
@@ -123,4 +121,4 @@ Route::get('/Gest/{num}/Stock/GererProduits', function ($num, $id) {
 
 Route::get('/Gest/{num}/Stock/Produit/${id}', function ($num, $id) {
     return view('Définir un seuil');
-});
+});*/
