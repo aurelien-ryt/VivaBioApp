@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProduitRequest;
+use App\Http\Requests\UpdateProduitRequest;
 use App\Models\Produit;
-use Illuminate\Http\Request;
 
 class ProduitController extends Controller
 {
     /**
-    * Afficher la liste des ressources.
+     * Display a listing of the resource.
      */
     public function index()
     {
@@ -16,7 +17,7 @@ class ProduitController extends Controller
     }
 
     /**
-     * Afficher le formulaire de création d'une nouvelle ressource.
+     * Show the form for creating a new resource.
      */
     public function create()
     {
@@ -24,15 +25,15 @@ class ProduitController extends Controller
     }
 
     /**
-     * Stockez une ressource nouvellement créée dans le stockage.
+     * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProduitRequest $request)
     {
         //
     }
 
     /**
-     * Afficher la ressource spécifiée.
+     * Display the specified resource.
      */
     public function show(Produit $produit)
     {
@@ -40,7 +41,7 @@ class ProduitController extends Controller
     }
 
     /**
-     * Afficher le formulaire de modification de la ressource spécifiée.
+     * Show the form for editing the specified resource.
      */
     public function edit(Produit $produit)
     {
@@ -48,15 +49,15 @@ class ProduitController extends Controller
     }
 
     /**
-     * Mettre à jour la ressource spécifiée dans le stockage.
+     * Update the specified resource in storage.
      */
-    public function update(Request $request, Produit $produit)
+    public function update(UpdateProduitRequest $request, Produit $produit)
     {
         //
     }
 
     /**
-     * Supprimez la ressource spécifiée du stockage.
+     * Remove the specified resource from storage.
      */
     public function destroy(Produit $produit)
     {

@@ -45,6 +45,34 @@
       <h2>Nos produits</h2>
       <p>Découvrez notre sélection naturelle et bio 🌸</p>
 
+      <div class="produits-grid">
+        @forelse($produits as $produit)
+          <div class="produit-card">
+            <div class="produit-image">
+              <i class="bi bi-box-seam"></i>
+            </div>
+            <div class="produit-info">
+              <h3>{{ $produit->nom }}</h3>
+              <p class="produit-description">{{ $produit->description }}</p>
+              <div class="produit-footer">
+                <span class="produit-prix">{{ $produit->prix }} €</span>
+                @if($produit->quantite_stock > 0)
+                  <span class="stock-disponible">En stock ({{ $produit->quantite_stock }})</span>
+                @else
+                  <span class="stock-indisponible">Rupture de stock</span>
+                @endif
+              </div>
+              <button class="btn-ajouter-panier" data-produit-id="{{ $produit->id }}">
+                <i class="bi bi-cart-plus"></i> Ajouter au panier
+              </button>
+            </div>
+          </div>
+        @empty
+          <div class="no-products">
+            <p>Aucun produit disponible pour le moment.</p>
+          </div>
+        @endforelse
+      </div>
     </section>
   </body>
 </html>

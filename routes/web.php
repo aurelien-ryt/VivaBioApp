@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CatalogueController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,9 +18,7 @@ Route::get('/catalogue/panier', function () {
     return view('clt.Panier');
 })->name('clt.panier');
 
-Route::get('/catalogue', function () {
-    return view('clt.Catalogue');
-})->name('clt.catalogue');
+Route::get('/catalogue', [CatalogueController::class, 'show'])->name('catalogue.show');
 
 
 
