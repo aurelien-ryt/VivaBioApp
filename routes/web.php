@@ -13,9 +13,13 @@ Route::get('/', function () {
 Route::get('/register', [AuthController::class, 'create']);
 Route::post('/register', [AuthController::class, 'store']);
 
-Route::get('/Clt/{num}/Panier', function ($num) {
+Route::get('/catalogue/{num}/panier', function ($num) {
     return view('clt.Panier', ['num' => $num]);
 })->name('clt.panier');
+
+Route::get('/catalogue', function () {
+    return view('clt.Catalogue');
+})->name('clt.catalogue');
 
 
 

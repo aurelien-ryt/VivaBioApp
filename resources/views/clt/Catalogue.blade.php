@@ -14,21 +14,18 @@
   <body>
     
     <header class="navbar">
-    
-      <a href="index.html" class="logo">VivaBio</a>
+      <div>
+        <a href="index.html" class="logo">VivaBio</a>   
+        <nav class="menu">
+          <a href="/">Accueil</a>
+          <a href="/catalogue">Catalogue</a>
+        </nav>
+      </div>
 
       <div class="search-bar">
         <input type="text" placeholder="Rechercher un produit..." />
         <button><i class="bi bi-search"></i></button>
       </div>
-
-   
-      <nav class="menu">
-        <a href="#">Accueil</a>
-        <a href="#">Catalogue</a>
-        <a href="#">Promotions</a>
-        <a href="#">Contact</a>
-      </nav>
 
       <div class="icons">
         <a href="#" class="user"><i class="bi bi-person"></i></a>
@@ -47,6 +44,7 @@
     <section class="catalogue">
       <h2>Nos produits</h2>
       <p>Découvrez notre sélection naturelle et bio 🌸</p>
+
     </section>
   </body>
 </html>
