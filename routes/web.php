@@ -13,8 +13,8 @@ Route::get('/', function () {
 Route::get('/register', [AuthController::class, 'create']);
 Route::post('/register', [AuthController::class, 'store']);
 
-Route::get('/catalogue/{num}/panier', function ($num) {
-    return view('clt.Panier', ['num' => $num]);
+Route::get('/catalogue/panier', function () {
+    return view('clt.Panier');
 })->name('clt.panier');
 
 Route::get('/catalogue', function () {

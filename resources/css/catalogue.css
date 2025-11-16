@@ -1,7 +1,14 @@
 .navbar {
-  background-color: green;
+  background-color: rgb(10, 68, 22);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 20px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
 }

@@ -29,7 +29,7 @@
 
       <div class="icons">
         <a href="#" class="user"><i class="bi bi-person"></i></a>
-        <a href="#" class="cart">
+        <a href="/catalogue/panier" class="cart">
           <i class="bi bi-cart"></i>
           <span id="cartAmount" class="cartAmount">0</span>
         </a>
