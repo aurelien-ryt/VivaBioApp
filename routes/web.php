@@ -13,6 +13,13 @@ Route::get('/', function () {
 Route::get('/register', [AuthController::class, 'create']);
 Route::post('/register', [AuthController::class, 'store']);
 
+Route::get('/Clt/{num}/Panier', function ($num) {
+    return view('clt.Panier', ['num' => $num]);
+})->name('clt.panier');
+
+
+
+
 
 // Ces routes sont surement a revoir en raison de l'ajout de controlleurs
 /*
@@ -56,6 +63,12 @@ Route::get('/Clt/{num}/Commande/{id}/AnnulerCommande', function ($num, $id) {
 Route::get('/Clt/{num}/Commande/Payer', function ($num) {
     return ('Payer la commande');
 });
+
+
+Route::get('/Clt/{num}/Panier', function ($num) {
+    return view('clt.cPanier', ['num' => $num]);
+})->name('clt.panier');
+
 
 // ------------------- Employés polyvalents  ----------------------
 
