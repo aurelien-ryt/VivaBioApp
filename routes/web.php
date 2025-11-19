@@ -3,15 +3,17 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::post('/login', [AuthController::class, 'vueLogin']);
+Route::get('/login', [UserController::class, 'vueLoginForm']) ->name('users.login');
+Route::post('/login', [UserController::class, 'login']) ->name('users.login.post');
 
-Route::get('/register', [AuthController::class, 'create']);
-Route::post('/register', [AuthController::class, 'store']);
+Route::get('/register', [UserController::class, 'vueRegisterForm']) ->name('users.register');
+Route::post('/register', [UserController::class, 'register']) ->name('users.register.post');
 
 
 // Ces routes sont surement a revoir en raison de l'ajout de controlleurs
