@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'nom',
+        'prenom',
         'email',
         'password',
     ];
@@ -44,5 +45,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function paniers()
+    {
+        return $this->hasMany(Panier::class);
+    }
+
+    public function commandes()
+    {
+        return $this->hasMany(Commande::class);
+    }
+
+    public function commandeFournisseurs()
+    {
+        return $this->hasMany(CommandeFournisseur::class, 'utilisateur_id');
     }
 }

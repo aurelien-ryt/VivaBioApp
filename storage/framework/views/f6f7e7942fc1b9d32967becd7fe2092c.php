@@ -8,6 +8,13 @@
 <body>
     <h1>Bienvenue sur le site de VivaBio</h1>
 
+    <navbar>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/catalogue">Catalogue</a></li>
+        </ul>
+    </navbar>
+
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae, ut?
     <br>
     <a href="/login">Pour vous connecter</a>

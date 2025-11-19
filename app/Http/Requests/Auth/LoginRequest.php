@@ -37,6 +37,9 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
+    // verifier si ce n'est pas un doublon de fonction
+
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();

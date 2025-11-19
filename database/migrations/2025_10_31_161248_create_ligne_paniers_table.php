@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('ligne_paniers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('panier_id')->constrained('paniers')->cascadeOnDelete();
+            $table->foreignId('produit_id')->constrained('produits')->cascadeOnDelete();
+            $table->integer('quantite');
+            $table->decimal('prix_unitaire', 8, 2);
             $table->timestamps();
         });
     }
