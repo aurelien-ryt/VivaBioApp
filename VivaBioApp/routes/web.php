@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\FournisseurController ;
+
 // Vues Générales
 Route::get('/', function () {
     return view("Page d'accueil");
@@ -27,7 +29,7 @@ Route::get('/Clt/{num}/Catalogue/Produit/{id}', function ($num, $id) {
 });
 
 Route::get('/Clt/{num}/Produit/{id}/Panier', function ($num, $id) {
-    return ("$id Ajoute un produit au panier l'article $id");
+    return ("$num Ajoute un produit au panier l'article $id");
 });
 
 Route::get('/Clt/{num}/Commande/{id}', function ($num, $id) {
@@ -58,7 +60,7 @@ Route::get('EP/{num}/Stock/FicheProduit/{id}', function ($num, $id) {
 });
 
 
-Route::get('/EP/{num}/Commande', function () {
+Route::get('/EP/{num}/Commande', function ($num) {
     return ('Consulter la commande');
 });
 
@@ -100,3 +102,6 @@ Route::get('/Gest/{num}/Stock/GererProduits', function ($num, $id) {
 Route::get('/Gest/{num}/Stock/Produit/${id}', function ($num, $id) {
     return view('Définir un seuil');
 });
+
+
+Route::get('/fournisseurs',[FournisseurController::class , 'consulter' ] ) ;
