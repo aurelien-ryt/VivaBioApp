@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HistoriqueMouvement extends Model
+class Stock extends Model
 {
     protected $fillable = ['type_mouvement', 'quantite', 'id_produit', 'id_utilisateur'];
 

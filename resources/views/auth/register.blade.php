@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('template')
 
 @section('contenu')
@@ -83,3 +84,13 @@
     </div>
 </div>
 @endsection
+=======
+<form method="POST" action=/registerSend>
+    @csrf
+    <input type="text" name="nom" placeholder="Nom">
+    <input type="text" name="prenom" placeholder="Prénom">
+    <input type="email" name="email" placeholder="Email">
+    <input type="password" name="password" placeholder="Mot de passe">
+    <button type="submit">S'inscrire</button>
+</form>
+>>>>>>> 51e79976 (Adding some features)
