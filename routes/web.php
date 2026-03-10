@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\CatalogueController;
+use App\Http\Controllers\Gestion;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProduitController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,3 +25,12 @@ Route::get('/catalogue', [CatalogueController::class, 'show'])->name('catalogue.
 Route::get('/catalogue/panier', function () {
     return view('clt.Panier');
 })->name('clt.panier');
+
+
+// Gestionnaire
+Route::/*middleware(['auth', 'role:gestionnaire'])  TODO : METTRE EN PLACE L'AUTHENTIFCATION AVEC ROLE
+    ->*/get('/gest/dashboard', [Gestion::class, 'vueDashboard'])
+    ->name('gestionnaire.dashboard');
+
+Route::/*middleware(['auth', 'role:gestionnaire'])
+    ->*/resource('produits', ProduitController::class);
