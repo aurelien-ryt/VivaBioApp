@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-<<<<<<< HEAD
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -74,7 +73,7 @@
           </div>
         @endforelse
       </div>
-=======
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -374,7 +373,7 @@
         <h1>Bienvenue chez VivaBio</h1>
         <p>Découvrez des produits bio de qualité, cultivés avec respect pour la nature et votre santé.</p>
         <a href="#produits" class="btn">Voir les produits</a>
->>>>>>> 51e79976 (Adding some features)
+
     </section>
     
     <div class="container">
