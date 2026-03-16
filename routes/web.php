@@ -28,8 +28,8 @@ Route::get('/catalogue/panier', function () {
 
 
 // Gestionnaire
-Route::/*middleware(['auth', 'role:gestionnaire'])  TODO : METTRE EN PLACE L'AUTHENTIFCATION AVEC ROLE
-    ->*/get('/gest/dashboard', [Gestion::class, 'vueDashboard'])
+Route::/*middleware(['auth', 'role:gestionnaire']) TODO : METTRE EN PLACE L'AUTHENTIFCATION AVEC ROLE
+    ->*/ get('/gest/dashboard', [Gestion::class, 'vueDashboard'])
     ->name('gestionnaire.dashboard');
 
 Route::/*middleware(['auth', 'role:gestionnaire'])

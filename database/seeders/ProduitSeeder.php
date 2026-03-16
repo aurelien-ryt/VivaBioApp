@@ -2,24 +2,39 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Produit;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-
 
 class ProduitSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        DB::table('produits')->insert([
-            'nom' => "Sérum anti-taches",
-            'description' => "Un sérum anti-taches pour les taches de la peau",
-            'prix' => 10,
-            'quantite_stock' => 100,
-            'seuil_alerte' => 10,
-        ]);
+        $produits = [
+            [
+                'nom' => 'Huile d\'Argan Bio',
+                'description' => 'Huile pure pressée à froid, idéale pour la peau et les cheveux',
+                'prix' => 24.90,
+                'quantite_stock' => 50,
+                'seuil_alerte' => 10,
+            ],
+            [
+                'nom' => 'Savon au Lait de Chèvre',
+                'description' => 'Savon naturel artisanal, doux pour les peaux sensibles',
+                'prix' => 8.50,
+                'quantite_stock' => 120,
+                'seuil_alerte' => 20,
+            ],
+            [
+                'nom' => 'Crème Hydratante Aloe Vera',
+                'description' => 'Soin visage hydratant à base d\'aloe vera bio',
+                'prix' => 18.00,
+                'quantite_stock' => 5,
+                'seuil_alerte' => 15,
+            ],
+        ];
+
+        foreach ($produits as $produit) {
+            Produit::create($produit);
+        }
     }
 }
