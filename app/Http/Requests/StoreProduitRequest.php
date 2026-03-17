@@ -11,7 +11,7 @@ class StoreProduitRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true; // ou auth()->check() && auth()->user()->isGestionnaire();
     }
 
     /**
@@ -22,7 +22,11 @@ class StoreProduitRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-        ];
+            'nom' => 'required|string|max:255',
+            'description' => 'required|string',
+            'prix' => 'required|numeric|min:0',
+            'quantite_stock' => 'required|integer|min:0',
+            'seuil_alerte' => 'required|integer|min:0',
+    ];
     }
 }
