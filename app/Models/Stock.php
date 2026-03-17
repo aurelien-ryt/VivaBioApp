@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stock extends Model
 {
+    protected $table = 'historique_mouvements';
+
     protected $fillable = ['type_mouvement', 'quantite', 'id_produit', 'id_utilisateur'];
 
     public function produit()
