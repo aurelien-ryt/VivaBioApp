@@ -15,6 +15,7 @@ namespace App\Models {
      * @property int $id
      * @property-read \App\Models\User $user
      * @property-read \App\Models\Panier $panier
+     * @property-read \App\Models\Panier $panier
      * @method static \Illuminate\Database\Eloquent\Builder<Commande>|Commande whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Commande>|Commande whereDateCommande($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Commande>|Commande whereStatut($value)
@@ -663,16 +664,14 @@ namespace App\Models {
      *
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
-     * @property string $contact
-     * @property string $adresse
-     * @property string $nom_fournisseur
+     * @property string $ville
+     * @property string $raison_sociale
      * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\CommandeFournisseur> $commandeFournisseurs
      * @property-read int|null $commandeFournisseurs_count
      * @method static \Illuminate\Database\Eloquent\Builder<Fournisseur>|Fournisseur whereId($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Fournisseur>|Fournisseur whereNomFournisseur($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Fournisseur>|Fournisseur whereAdresse($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Fournisseur>|Fournisseur whereContact($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Fournisseur>|Fournisseur whereRaisonSociale($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Fournisseur>|Fournisseur whereVille($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Fournisseur>|Fournisseur whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Fournisseur>|Fournisseur whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Fournisseur>|Fournisseur newModelQuery()

@@ -20,7 +20,7 @@ Route::post('/register', [UserController::class, 'register'])->name('users.regis
 
 Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
 
-// Catalogue
+// Catalogue (public)
 Route::get('/catalogue', [CatalogueController::class, 'show'])->name('catalogue.show');
 
 // Gestionnaire
@@ -34,4 +34,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/catalogue/panier', function () {
         return view('clt.Panier');
     })->name('clt.panier');
+    Route::get('/catalogue/produit/{id}', [ProduitController::class, 'show'])->name('produit.show');
 });

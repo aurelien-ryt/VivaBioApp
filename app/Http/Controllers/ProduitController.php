@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProduitRequest;
@@ -16,7 +15,7 @@ class ProduitController extends Controller
 }
 
     /**
-     *  création d'un bouton nouveau dans dashboard.
+     * Show the form for creating a new resource.
      */
     public function create()
     {
@@ -37,8 +36,8 @@ class ProduitController extends Controller
      */
    /* public function show(Produit $produit)
     {
-    return view('produits.show', compact('produit'));
-}*/
+        return view('clt.Produit', compact('produit'));
+    }
 
     /**
      * On affiche une fiche produit, elle peux etre modifier mais c'est pas ce qu'on fera dans cette fonction
