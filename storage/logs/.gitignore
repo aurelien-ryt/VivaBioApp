@@ -1,2 +1,7 @@
-*
-!.gitignore
+# Logs
+storage/logs/
+*.log
+
+# Vendor (forcer l'exclusion des sous-dossiers déjà trackés)
+vendor/
+vendor/**

@@ -1,24 +1,20 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 use App\Models\Produit;
-
-
 
 class CatalogueController extends Controller
 {
-     /**
-     * Show the profile for a given user.
-     */
-    public function show(): View
+    public function show(Request $request)
     {
-        $produits = Produit::all();
-        
-        return view('clt.Catalogue', [
-            'produits' => $produits
-        ]);
+        $recherche = $request->input('recherche');
+
+        $produits = Produit::when($recherche, function ($query) use ($recherche) {
+            $query->where('nom', 'like', '%' . $recherche . '%')
+                  ->orWhere('description', 'like', '%' . $recherche . '%');
+        })->get();
+
+        return view('clt.Catalogue', compact('produits', 'recherche'));
     }
 }
