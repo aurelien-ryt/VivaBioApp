@@ -22,15 +22,16 @@ Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
 
 // Catalogue
 Route::get('/catalogue', [CatalogueController::class, 'show'])->name('catalogue.show');
-Route::get('/catalogue/panier', function () {
-    return view('clt.Panier');
-})->name('clt.panier');
-
 
 // Gestionnaire
-Route::/*middleware(['auth', 'role:gestionnaire']) TODO : METTRE EN PLACE L'AUTHENTIFCATION AVEC ROLE
-    ->*/ get('/gest/dashboard', [Gestion::class, 'vueDashboard'])
-    ->name('gestionnaire.dashboard');
+Route::middleware(['auth', 'role:gestionnaire'])->group(function () {
+    Route::get('/gest/dashboard', [Gestion::class, 'vueDashboard'])->name('gestionnaire.dashboard');
+    Route::resource('produits', ProduitController::class);
+});
 
-Route::/*middleware(['auth', 'role:gestionnaire'])
-    ->*/resource('produits', ProduitController::class);
+// Client
+Route::middleware(['auth'])->group(function () {
+    Route::get('/catalogue/panier', function () {
+        return view('clt.Panier');
+    })->name('clt.panier');
+});

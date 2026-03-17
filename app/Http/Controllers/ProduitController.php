@@ -8,17 +8,15 @@ use App\Models\Produit;
 
 class ProduitController extends Controller
 {
-    /**
-     * TODO VOIR POUR PLUTOT PAGINER LE TABLEAU DASHBOARD.
-     */
+    
     public function index()
     {
-    $produits = Produit::paginate(15);
+    $produits = Produit::paginate(100);
     return view('dashboard', compact('produits'));
 }
 
     /**
-     * TODO création d'un bouton nouveau dans dashboard.
+     *  création d'un bouton nouveau dans dashboard.
      */
     public function create()
     {
@@ -26,21 +24,21 @@ class ProduitController extends Controller
 }
 
     /**
-     * TODO : quand on aura fini de créer le produit on le stockera avec cette fonction.
+     * quand on aura fini de créer le produit on le stockera avec cette fonction.
      */
     public function store(StoreProduitRequest $request)
     {
     Produit::create($request->validated());
-    return redirect()->route('produits.index')->with('success', 'Produit créé');
+    return redirect()->route('gestionnaire.dashboard')->with('success', 'Produit créé');
 }
 
     /**
      * TODO: rendre l'acces a un article simplement en cliquant sur le titre (donc avec a href).
      */
-    public function show(Produit $produit)
+   /* public function show(Produit $produit)
     {
     return view('produits.show', compact('produit'));
-}
+}*/
 
     /**
      * On affiche une fiche produit, elle peux etre modifier mais c'est pas ce qu'on fera dans cette fonction
@@ -56,7 +54,7 @@ class ProduitController extends Controller
     public function update(UpdateProduitRequest $request, Produit $produit)
     {
     $produit->update($request->validated());
-    return redirect()->route('produits.index')->with('success', 'Produit mis à jour');
+    return redirect()->route('gestionnaire.dashboard')->with('success', 'Produit mis à jour');
 }
 
     /**
@@ -65,6 +63,6 @@ class ProduitController extends Controller
     public function destroy(Produit $produit)
     {
     $produit->delete();
-    return redirect()->route('produits.index')->with('success', 'Produit supprimé');
+    return redirect()->route('gestionnaire.dashboard')->with('success', 'Produit supprimé');
 }
 }

@@ -49,7 +49,7 @@
 
         <div>
             <button type="submit">Créer</button>
-            <a href="{{ route('produits.index') }}">Annuler</a>
+            <a href="{{ route('gestionnaire.dashboard') }}">Annuler</a>
         </div>
     </form>
 </body>

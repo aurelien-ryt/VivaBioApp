@@ -50,7 +50,7 @@
 
         <div>
             <button type="submit">Mettre à jour</button>
-            <a href="{{ route('produits.index') }}">Annuler</a>
+            <a href="{{ route('gestionnaire.dashboard') }}">Annuler</a>
         </div>
     </form>
 </body>

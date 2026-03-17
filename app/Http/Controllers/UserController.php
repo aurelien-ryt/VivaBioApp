@@ -46,7 +46,11 @@ class UserController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+
+            return match(Auth::user()->role) {
+                'gestionnaire' => redirect()->route('gestionnaire.dashboard'),
+                default        => redirect()->route('catalogue.show'),
+            };
         }
 
         return back()->withErrors([
