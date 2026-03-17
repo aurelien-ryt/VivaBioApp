@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ligne_commande_fournisseurs', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantité');
+            $table->integer('quantite');
             $table->foreignId('commande_fournisseur_id')->constrained();
             $table->foreignId('produit_id')->constrained();
         });
