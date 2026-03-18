@@ -34,5 +34,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/catalogue/panier', function () {
         return view('clt.Panier');
     })->name('clt.panier');
-    Route::get('/catalogue/produit/{id}', [ProduitController::class, 'show'])->name('produit.show');
+    Route::get('/catalogue/produit/{produit}', [ProduitController::class, 'show'])->name('produit.show');
 });

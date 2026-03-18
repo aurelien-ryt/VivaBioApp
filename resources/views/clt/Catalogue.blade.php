@@ -64,7 +64,7 @@
                                 <span class="stock-indisponible">Rupture de stock</span>
                             @endif
                         </div>
-                        <a href="{{ route('produits.show', $produit->id) }}" class="btn-consulter-produit">
+                        <a href="{{ route('produit.show', $produit->id) }}" class="btn-consulter-produit">
                             <i class="bi bi-eye"></i> Consulter l'article
                         </a>
                     </div>
