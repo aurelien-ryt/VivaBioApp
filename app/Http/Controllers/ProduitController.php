@@ -34,7 +34,7 @@ class ProduitController extends Controller
     /**
      * TODO: rendre l'acces a un article simplement en cliquant sur le titre (donc avec a href).
      */
-   /* public function show(Produit $produit)
+    public function show(Produit $produit)
     {
         return view('clt.Produit', compact('produit'));
     }
