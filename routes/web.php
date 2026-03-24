@@ -3,6 +3,7 @@
 use App\Http\Controllers\Gestion;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProduitController;
+use App\Http\Controllers\PanierController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +30,13 @@ Route::middleware(['auth', 'role:gestionnaire'])->group(function () {
 });
 
 // Client
-Route::middleware(['auth'])->group(function () {
+/*Route::middleware(['auth'])->group(function () {*/
     Route::get('/catalogue/panier', function () {
-        return view('clt.Panier');
+        return view('clt.panier'); 
     })->name('clt.panier');
     Route::get('/catalogue/produit/{produit}', [ProduitController::class, 'show'])->name('produit.show');
-});
+/*});*/
+
+Route::get('/panier', [PanierController::class, 'index'])->name('panier.index');
+Route::post('/panier/ajouter', [PanierController::class, 'store'])->name('panier.store');
+Route::delete('/panier/supprimer/{ligne}', [PanierController::class, 'destroy'])->name('panier.destroy');

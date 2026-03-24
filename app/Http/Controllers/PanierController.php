@@ -3,63 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\Panier;
+use App\Models\LignePanier;
+use App\Models\Produit;
 use Illuminate\Http\Request;
 
 class PanierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $panier = Panier::where('user_id', auth()->id())->first();
+        $lignes = $panier ? $panier->lignePaniers()->with('produit')->get() : [];
+
+        return view('clt.panier', compact('panier', 'lignes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
+        // 1. On cherche le panier de l'utilisateur, sinon on le crée
+        $panier = Panier::firstOrCreate(['user_id' => auth()->id()]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Panier $panier)
-    {
-        //
-    }
+        // 2. On récupère le prix du produit depuis la BDD
+        $produit = Produit::find($request->produit_id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Panier $panier)
-    {
-        //
-    }
+        // 3. On crée la ligne dans le panier
+        LignePanier::create([
+            'panier_id'     => $panier->id,
+            'produit_id'    => $request->produit_id,
+            'quantite'      => $request->quantite,
+            'prix_unitaire' => $produit->prix,
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Panier $panier)
-    {
-        //
+        return redirect()->route('panier.index');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Panier $panier)
+        public function destroy(LignePanier $ligne)
     {
-        //
+        $ligne->delete();
+        return redirect()->route('panier.index');
     }
 }

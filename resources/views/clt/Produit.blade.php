@@ -21,7 +21,7 @@
         </div>
         <div class="icons">
             <a href="#"><i class="bi bi-person"></i></a>
-            <a href="/catalogue/panier" class="cart">
+            <a href="/panier" class="cart">
                 <i class="bi bi-cart"></i>
                 <span id="cartAmount" class="cartAmount">0</span>
             </a>
@@ -69,9 +69,15 @@
                 </div>
 
                 {{-- Bouton panier --}}
-                <button class="consulter-produit" {{ $produit->quantite_stock == 0 ? 'disabled' : '' }}>
-                    <i class="bi bi-cart-plus"></i> Ajouter au panier
-                </button>
+                <form action="{{ route('panier.store') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="produit_id" value="{{ $produit->id }}">
+                    <input type="hidden" name="quantite" value="1">
+                    <button type="submit" class="consulter-produit" {{ $produit->quantite_stock == 0 ? 'disabled' : '' }}>
+                        <i class="bi bi-cart-plus"></i> Ajouter au panier
+                    </button>
+                </form>
+
             </div>
 
         </div>
