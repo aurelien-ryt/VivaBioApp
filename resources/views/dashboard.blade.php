@@ -44,8 +44,45 @@
             </tr>
             @endforelse
         </tbody>
+            <button type="button"><a href="{{ route('produits.create', ) }}">Créer un article</a></button>
     </table>
 
-    <button type="button"><a href="{{ route('produits.create', ) }}">Créer un article</a></button>
+        <h1>Dashboard Gestionnaire - Utilisateur</h1>
+
+        <table border="1">
+        <thead> 
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <th>Seuil Alerte</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($produits as $produit)
+            <tr>
+                <td>{{ $produit->id }}</td>
+                <td>{{ $produit->nom }}</td>
+                <td>{{ number_format($produit->prix, 2) }} €</td>
+                <td>{{ $produit->quantite_stock }}</td>
+                <td>{{ $produit->seuil_alerte }}</td>
+                
+                <td><button type="button"><a href="{{ route('produits.edit', $produit->id) }}">Modifier l'article</a></button>
+                    
+                    <form action="{{ route('produits.destroy', $produit->id) }}" method="POST" style="display:inline"
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer « {{ $produit->nom }} » ?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Supprimer l'article</button>
+                    </form>
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="5">Aucun produit disponible</td>
+            </tr>
+            @endforelse
 </body>
 </html>

@@ -4,10 +4,23 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProduitRequest;
 use App\Http\Requests\UpdateProduitRequest;
 use App\Models\Produit;
+use Illuminate\Http\Request;
 
 class ProduitController extends Controller
 {
-    
+
+    public function catalogue(Request $request)
+    {
+        $recherche = $request->input('recherche');
+
+        $produits = Produit::when($recherche, function ($query) use ($recherche) {
+            $query->where('nom', 'like', '%' . $recherche . '%')
+                  ->orWhere('description', 'like', '%' . $recherche . '%');
+        })->get();
+
+        return view('clt.Catalogue', compact('produits', 'recherche'));
+    }
+
     public function index()
     {
     $produits = Produit::paginate(100);
@@ -61,6 +74,7 @@ class ProduitController extends Controller
      */
     public function destroy(Produit $produit)
     {
+    $produit->historiqueMouvements()->delete();
     $produit->delete();
     return redirect()->route('gestionnaire.dashboard')->with('success', 'Produit supprimé');
 }

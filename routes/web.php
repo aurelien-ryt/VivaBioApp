@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\Gestion;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProduitController;
@@ -21,7 +20,7 @@ Route::post('/register', [UserController::class, 'register'])->name('users.regis
 Route::post('/logout', [UserController::class, 'logout'])->name('users.logout');
 
 // Catalogue (public)
-Route::get('/catalogue', [CatalogueController::class, 'show'])->name('catalogue.show');
+Route::get('/catalogue', [ProduitController::class, 'catalogue'])->name('catalogue.show');
 
 // Gestionnaire
 Route::middleware(['auth', 'role:gestionnaire'])->group(function () {
