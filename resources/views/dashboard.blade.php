@@ -6,7 +6,9 @@
     <title>Dashboard - Gestionnaire</title>
 </head>
 <body>
-    <h1>Dashboard Gestionnaire - Produits</h1>
+    <h1>Dashboard</h1>
+
+    <h2>Gestion Produits</h2>
 
     <table border="1">
         <thead> 
@@ -47,7 +49,7 @@
             <button type="button"><a href="{{ route('produits.create', ) }}">Créer un article</a></button>
     </table>
 
-        <h1>Dashboard Gestionnaire - Utilisateur</h1>
+        <h2>Gestion Utilisateur</h2>
 
         <table border="1">
         <thead> 
@@ -60,7 +62,7 @@
                 <th>Role</th>
                 <th>Email</th>
                 <th>Date de création du compte</th>
-                <th>Date de modification du compte</th>
+                <th>Action</th>
 
             </tr>
         </thead>
@@ -93,6 +95,40 @@
             @endforelse
         </tbody>
             <button type="button"><a href="{{ route('produits.create', ) }}">Créer un utilisateur</a></button>
+
+
+        </table>
+
+            <h2>Gestion Commandes</h2>
+
+        <table border="1">
+        <thead> 
+            <tr>
+                <th>ID</th>
+                <th>Id de l'utilisateur </th>
+                <th>Date de la commande</th>
+                <th>Status</th>
+                <th>Total €</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($commandes as $commande)
+            <tr>
+                <td>{{ $commande->id }}</td>
+                <td>{{ $commande->user_id }}</td>
+                <td>{{ $commande->created_at }}</td>
+                <td>{{ $commande->statut }}</td>
+                <td>{{ $commande->total }}</td>
+
+                    </form>
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="5">Aucun utilisateur disponible</td>
+            </tr>
+            @endforelse
+        </tbody>
     </table>
     
 </body>
