@@ -26,7 +26,16 @@ Route::get('/catalogue', [ProduitController::class, 'catalogue'])->name('catalog
 // Gestionnaire
 Route::middleware(['auth', 'role:gestionnaire'])->group(function () {
     Route::get('/gest/dashboard', [Gestion::class, 'vueDashboard'])->name('gestionnaire.dashboard');
+
     Route::resource('produits', ProduitController::class);
+    Route::resource('users', UserController::class);
+    
+    //Partie Utilisateur
+    Route::get('/gest/user/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::delete('/gest/user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::put('/gest/user/{user}', [UserController::class, 'update'])->name('user.update');
+
+
 });
 
 // Client
