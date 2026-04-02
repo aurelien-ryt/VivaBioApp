@@ -6,10 +6,10 @@ use App\Http\Controllers\ProduitController;
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', [ProduitController::class, 'catalogue']);
+Route::get('/welcome', function () {
     return view('welcome');
 });
-
 // Authentification
 Route::get('/login', [UserController::class, 'vueLoginForm'])->name('users.login');
 Route::post('/login', [UserController::class, 'login'])->name('users.login.post');

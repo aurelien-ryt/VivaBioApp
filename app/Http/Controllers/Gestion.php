@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Commande;
 use Illuminate\View\View;
 use App\Models\Produit;
 use App\Models\User;
@@ -12,9 +14,9 @@ class Gestion extends Controller
     {        
         $produits = Produit::all();
         $users = User::all();
+        $commandes = Commande::all();
 
-        return view('dashboard' , compact('produits'), compact('users'));
-
-
+        return view('dashboard' , 
+        compact('produits', 'users', 'commandes'));
     }
 }
