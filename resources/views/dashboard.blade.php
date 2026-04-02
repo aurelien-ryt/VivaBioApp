@@ -54,35 +54,46 @@
             <tr>
                 <th>ID</th>
                 <th>Nom</th>
-                <th>Prix</th>
-                <th>Stock</th>
-                <th>Seuil Alerte</th>
-                <th>Action</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Mot de passe </th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Date de création du compte</th>
+                <th>Date de modification du compte</th>
+
             </tr>
         </thead>
         <tbody>
-            @forelse($produits as $produit)
+            @forelse($users as $user)
             <tr>
-                <td>{{ $produit->id }}</td>
-                <td>{{ $produit->nom }}</td>
-                <td>{{ number_format($produit->prix, 2) }} €</td>
-                <td>{{ $produit->quantite_stock }}</td>
-                <td>{{ $produit->seuil_alerte }}</td>
-                
-                <td><button type="button"><a href="{{ route('produits.edit', $produit->id) }}">Modifier l'article</a></button>
-                    
-                    <form action="{{ route('produits.destroy', $produit->id) }}" method="POST" style="display:inline"
-                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer « {{ $produit->nom }} » ?')">
+                <td>{{ $user->id }}</td>
+                <td>{{ $user->nom }}</td>
+                <td>{{ $user->prenom }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->password }}</td>
+                <td>{{ $user->role }}</td>
+                <td>{{ $user->created_at }}</td>
+                <td>{{ $user->updated_at }}</td>
+
+                <td><button type="button"><a href="{{ route('user.edit', $user->id) }}">Modifier l'utilisateur</a></button>
+
+                    <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display:inline"
+                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer « {{ $user->nom }} » ?')">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Supprimer l'article</button>
+                        <button type="submit">Supprimer l'utilisateur</button>
                     </form>
                 </td>
             </tr>
             @empty
             <tr>
-                <td colspan="5">Aucun produit disponible</td>
+                <td colspan="5">Aucun utilisateur disponible</td>
             </tr>
             @endforelse
+        </tbody>
+            <button type="button"><a href="{{ route('produits.create', ) }}">Créer un utilisateur</a></button>
+    </table>
+    
 </body>
 </html>
