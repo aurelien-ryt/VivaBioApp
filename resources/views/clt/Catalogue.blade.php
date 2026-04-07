@@ -17,6 +17,7 @@
             <nav class="menu">
                 <a href="/">Accueil</a>
                 <a href="/catalogue">Catalogue</a>
+                <a href="{{ route('commande.show') }}">Commandes</a>
             </nav>
         </div>
 
@@ -34,10 +35,10 @@
         </form>
 
         <div class="icons">
-            <a href="#" class="user"><i class="bi bi-person"></i></a>
+            <a href="{{ route('profil.user') }}" class="user"><i class="bi bi-person"></i></a>
             <a href="/catalogue/panier" class="cart">
                 <i class="bi bi-cart"></i>
-                <span id="cartAmount" class="cartAmount">0</span>
+                <span id="cartAmount" class="cartAmount">{{ $cartCount }}</span>
             </a>
         </div>
     </header>

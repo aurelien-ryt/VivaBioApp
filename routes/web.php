@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\Gestion;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProduitController;
 use App\Http\Controllers\PanierController;
-
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +28,7 @@ Route::get('/catalogue', [ProduitController::class, 'catalogue'])->name('catalog
 Route::middleware(['auth', 'role:gestionnaire'])->group(function () {
     Route::get('/gest/dashboard', [Gestion::class, 'vueDashboard'])->name('gestionnaire.dashboard');
     Route::resource('produits', ProduitController::class);
+
 });
 
 // Client
@@ -35,8 +37,15 @@ Route::middleware(['auth', 'role:gestionnaire'])->group(function () {
         return view('clt.panier'); 
     })->name('clt.panier');
     Route::get('/catalogue/produit/{produit}', [ProduitController::class, 'show'])->name('produit.show');
+    Route::get('/panier/commandes', [CommandeController::class, 'getCommandes'])->name('commande.show');
+    Route::get('/commandes/{commande}', [CommandeController::class, 'show'])->name('commande.detail');
+    Route::put('/panier/commandes/{commande}/annuler', [CommandeController::class, 'annuler'])->name('commande.annuler');
 /*});*/
 
 Route::get('/panier', [PanierController::class, 'index'])->name('panier.index');
 Route::post('/panier/ajouter', [PanierController::class, 'store'])->name('panier.store');
 Route::delete('/panier/supprimer/{ligne}', [PanierController::class, 'destroy'])->name('panier.destroy');
+Route::post('/panier/valider', [CommandeController::class, 'store'])->name('panier.valider');    
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profil', [ProfileController::class, 'show'])->name('profil.user'); 
+  });

@@ -17,4 +17,8 @@ class Commande extends Model
     {
         return $this->belongsTo(Panier::class);
     }
+    public function ligneCommandes()
+    {
+        return $this->hasMany(LigneCommande::class);
+    }
 }

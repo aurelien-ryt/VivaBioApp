@@ -21,6 +21,12 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function show(Request $request)                                                                                                                      
+  {               
+      $user = $request->user();
+      return view('profile.show', ['user' => $user]);
+  }
+
     /**
      * Update the user's profile information.
      */
@@ -57,4 +63,5 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    
 }

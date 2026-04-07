@@ -18,7 +18,10 @@ class ProduitController extends Controller
                   ->orWhere('description', 'like', '%' . $recherche . '%');
         })->get();
 
-        return view('clt.Catalogue', compact('produits', 'recherche'));
+        $panier = \App\Models\Panier::where('user_id', auth()->id())->first();
+        $cartCount = $panier ? $panier->lignePaniers()->count() : 0;
+
+        return view('clt.Catalogue', compact('produits', 'recherche', 'cartCount'));
     }
 
     public function index()
@@ -40,16 +43,19 @@ class ProduitController extends Controller
      */
     public function store(StoreProduitRequest $request)
     {
-    Produit::create($request->validated());
-    return redirect()->route('gestionnaire.dashboard')->with('success', 'Produit créé');
-}
+        Produit::create($request->validated());
+        return redirect()->route('gestionnaire.dashboard')->with('success', 'Produit créé');
+    }
 
     /**
      * TODO: rendre l'acces a un article simplement en cliquant sur le titre (donc avec a href).
      */
     public function show(Produit $produit)
     {
-        return view('clt.Produit', compact('produit'));
+        $panier = \App\Models\Panier::where('user_id', auth()->id())->first();
+        $cartCount = $panier ? $panier->lignePaniers()->count() : 0;
+
+        return view('clt.Produit', compact('produit', 'cartCount'));
     }
 
     /**
@@ -65,17 +71,17 @@ class ProduitController extends Controller
      */
     public function update(UpdateProduitRequest $request, Produit $produit)
     {
-    $produit->update($request->validated());
-    return redirect()->route('gestionnaire.dashboard')->with('success', 'Produit mis à jour');
-}
+        $produit->update($request->validated());
+        return redirect()->route('gestionnaire.dashboard')->with('success', 'Produit mis à jour');
+    }
 
     /**
      * On supprime l'article.
      */
     public function destroy(Produit $produit)
     {
-    $produit->historiqueMouvements()->delete();
-    $produit->delete();
-    return redirect()->route('gestionnaire.dashboard')->with('success', 'Produit supprimé');
-}
+        $produit->historiqueMouvements()->delete();
+        $produit->delete();
+        return redirect()->route('gestionnaire.dashboard')->with('success', 'Produit supprimé');
+    }
 }

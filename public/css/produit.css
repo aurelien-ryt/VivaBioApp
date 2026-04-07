@@ -175,6 +175,39 @@ body {
     color: var(--anthracite);
 }
 
+.quantite-selector {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    width: fit-content;
+}
+
+.quantite-selector button {
+    background: var(--off-white);
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--anthracite);
+    transition: background 0.2s;
+}
+
+.quantite-selector button:hover { background: #e8e8e8; }
+
+.quantite-selector input {
+    width: 60px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    outline: none;
+}
+
 .btn-ajouter-panier {
     background-color: var(--sage);
     color: white;

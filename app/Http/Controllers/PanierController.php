@@ -40,4 +40,6 @@ class PanierController extends Controller
         $ligne->delete();
         return redirect()->route('panier.index');
     }
+
+    
 }

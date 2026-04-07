@@ -17,13 +17,14 @@
             <nav class="menu">
                 <a href="/">Accueil</a>
                 <a href="/catalogue">Catalogue</a>
+                <a href="{{ route('commande.show') }}">Commandes</a>
             </nav>
         </div>
         <div class="icons">
-            <a href="#"><i class="bi bi-person"></i></a>
+            <a href="{{ route('profil.user') }}"><i class="bi bi-person"></i></a>
             <a href="/panier" class="cart">
                 <i class="bi bi-cart"></i>
-                <span id="cartAmount" class="cartAmount">0</span>
+                <span id="cartAmount" class="cartAmount">{{ $cartCount }}</span>
             </a>
         </div>
     </header>
@@ -72,11 +73,25 @@
                 <form action="{{ route('panier.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="produit_id" value="{{ $produit->id }}">
-                    <input type="hidden" name="quantite" value="1">
-                    <button type="submit" class="consulter-produit" {{ $produit->quantite_stock == 0 ? 'disabled' : '' }}>
+                    <div class="quantite-selector">
+                        <button type="button" onclick="changeQty(-1)">−</button>
+                        <input type="number" name="quantite" id="quantite" value="1" min="1" max="{{ $produit->quantite_stock }}">
+                        <button type="button" onclick="changeQty(1)">+</button>
+                    </div>
+                    <button type="submit" class="btn-ajouter-panier" {{ $produit->quantite_stock == 0 ? 'disabled' : '' }}>
                         <i class="bi bi-cart-plus"></i> Ajouter au panier
                     </button>
                 </form>
+
+                <script>
+                    function changeQty(delta) {
+                        const input = document.getElementById('quantite');
+                        const newVal = parseInt(input.value) + delta;
+                        if (newVal >= 1 && newVal <= parseInt(input.max)) {
+                            input.value = newVal;
+                        }
+                    }
+                </script>
 
             </div>
 
