@@ -43,10 +43,16 @@
         </div>
     </header>
 
+
+
     {{-- CATALOGUE --}}
     <section class="catalogue">
+       
+        <center><h1>Bienvenue sur VivaBio</h1> 
+        <p>🌸Découvrez notre sélection de produits biologiques et naturels, soigneusement sélectionnés pour votre bien-être.🌸</p>
+        </center>
+
         <h2>Nos produits</h2>
-        <p>Découvrez notre sélection naturelle et bio 🌸</p>
 
         <div class="produits-grid">
             @forelse($produits as $produit)

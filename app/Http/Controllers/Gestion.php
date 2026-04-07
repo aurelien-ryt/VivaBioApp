@@ -1,16 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Commande;
 use Illuminate\View\View;
 use App\Models\Produit;
+use App\Models\User;
 
-use Illuminate\Http\Request;
 
 class Gestion extends Controller
 {
     public function vueDashboard() 
     {        
         $produits = Produit::all();
-        return view('dashboard' , compact('produits'));
+        $users = User::all();
+        $commandes = Commande::all();
+
+        return view('dashboard' , 
+        compact('produits', 'users', 'commandes'));
     }
 }

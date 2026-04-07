@@ -8,10 +8,10 @@ use App\Http\Controllers\PanierController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', [ProduitController::class, 'catalogue']);
+Route::get('/welcome', function () {
     return view('welcome');
 });
-
 // Authentification
 Route::get('/login', [UserController::class, 'vueLoginForm'])->name('users.login');
 Route::post('/login', [UserController::class, 'login'])->name('users.login.post');
@@ -27,7 +27,12 @@ Route::get('/catalogue', [ProduitController::class, 'catalogue'])->name('catalog
 // Gestionnaire
 Route::middleware(['auth', 'role:gestionnaire'])->group(function () {
     Route::get('/gest/dashboard', [Gestion::class, 'vueDashboard'])->name('gestionnaire.dashboard');
+
     Route::resource('produits', ProduitController::class);
+    Route::resource('users', UserController::class);
+    Route::get('/gest/user/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::delete('/gest/user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::put('/gest/user/{user}', [UserController::class, 'update'])->name('user.update');
 
 });
 

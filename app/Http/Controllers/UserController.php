@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,4 +66,29 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('users.login');
     }
+
+    public function edit(User $user){
+        return view('user.edit', compact('user'));
+}
+
+    public function update(UpdateUserRequest $request, User $user)
+    {
+    $user->update($request->validated());
+    return redirect()->route('gestionnaire.dashboard')->with('success', 'Utilisateur mis a jour');
+}
+
+    public function destroy(User $user)
+    {
+    //$user->historiqueMouvements()->delete();
+    $user->delete();
+    return redirect()->route('gestionnaire.dashboard')->with('success', 'Utilisateur supprimé');
+}
+
+
+    public function create()
+    {
+    return view('produits.create');
+}
+
+
 }

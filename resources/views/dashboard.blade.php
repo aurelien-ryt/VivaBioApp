@@ -239,12 +239,12 @@
                         <td>{{ $produit->seuil_alerte }}</td>
                         <td>
                             <div class="action-cell">
-                                <a class="btn btn-edit" href="{{ route('produits.edit', $produit->id) }}">Modifier l'article</a>
+                                <a class="btn btn-edit" href="{{ route('produits.edit', $produit->id) }}">Modifier</a>
                                 <form action="{{ route('produits.destroy', $produit->id) }}" method="POST"
-                                      onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer « {{ $produit->nom }} » ?')">
+                                      onsubmit="return confirm('Supprimer « {{ $produit->nom }} » ?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Supprimer l'article</button>
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
                                 </form>
                             </div>
                         </td>
@@ -273,35 +273,71 @@
                 <tr>
                     <th>ID</th>
                     <th>Nom</th>
-                    <th>Prix</th>
-                    <th>Stock</th>
-                    <th>Seuil Alerte</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Rôle</th>
+                    <th>Créé le</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @forelse($produits as $produit)
-                    <tr @if($produit->quantite_stock <= $produit->seuil_alerte) class="stock-low" @endif>
-                        <td>{{ $produit->id }}</td>
-                        <td>{{ $produit->nom }}</td>
-                        <td>{{ number_format($produit->prix, 2) }} €</td>
-                        <td>{{ $produit->quantite_stock }}</td>
-                        <td>{{ $produit->seuil_alerte }}</td>
+                @forelse($users as $user)
+                    <tr>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->nom }}</td>
+                        <td>{{ $user->prenom }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->role }}</td>
+                        <td>{{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}</td>
                         <td>
                             <div class="action-cell">
-                                <a class="btn btn-edit" href="{{ route('produits.edit', $produit->id) }}">Modifier l'article</a>
-                                <form action="{{ route('produits.destroy', $produit->id) }}" method="POST"
-                                      onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer « {{ $produit->nom }} » ?')">
+                                <a class="btn btn-edit" href="{{ route('user.edit', $user->id) }}">Modifier</a>
+                                <form action="{{ route('user.destroy', $user->id) }}" method="POST"
+                                      onsubmit="return confirm('Supprimer « {{ $user->nom }} » ?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Supprimer l'article</button>
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
                                 </form>
                             </div>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6">Aucun produit disponible</td>
+                        <td colspan="7">Aucun utilisateur disponible</td>
+                    </tr>
+                @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {{-- SECTION COMMANDES --}}
+    <div class="section">
+        <h1>Dashboard Gestionnaire — Commandes</h1>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Utilisateur</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                @forelse($commandes as $commande)
+                    <tr>
+                        <td>{{ $commande->id }}</td>
+                        <td>{{ $commande->user_id }}</td>
+                        <td>{{ \Carbon\Carbon::parse($commande->created_at)->format('d/m/Y') }}</td>
+                        <td>{{ $commande->statut }}</td>
+                        <td>{{ number_format($commande->total, 2) }} €</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5">Aucune commande disponible</td>
                     </tr>
                 @endforelse
                 </tbody>
