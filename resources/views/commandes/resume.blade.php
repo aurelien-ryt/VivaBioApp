@@ -289,6 +289,13 @@
 
     <div class="page-content">
 
+        {{-- Message de confirmation --}}
+        @if(session('success'))
+            <p style="background-color: #E6F4EA; color: #2E7D32; padding: 0.8rem 1.2rem; border-radius: 6px; margin-bottom: 1.5rem;">
+                <i class="bi bi-check-circle"></i> {{ session('success') }}
+            </p>
+        @endif
+
         {{-- En-tête --}}
         <div class="page-header">
             <h1><i class="bi bi-bag-check"></i> Mes commandes</h1>

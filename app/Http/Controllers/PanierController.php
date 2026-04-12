@@ -33,7 +33,7 @@ class PanierController extends Controller
             'prix_unitaire' => $produit->prix,
         ]);
 
-        return redirect()->route('panier.index');
+        return redirect()->back()->with('success', 'Produit ajouté au panier !');
     }
         public function destroy(LignePanier $ligne)
     {

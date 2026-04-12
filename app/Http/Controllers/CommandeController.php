@@ -53,7 +53,7 @@ class CommandeController extends Controller
   } 
         $panier->lignePaniers()->delete();
 
-        return redirect()->route('commande.show');
+        return redirect()->route('commande.show')->with('success', 'Commande passée avec succès !');
     }
 
     public function show(Commande $commande)

@@ -51,5 +51,6 @@ Route::post('/panier/ajouter', [PanierController::class, 'store'])->name('panier
 Route::delete('/panier/supprimer/{ligne}', [PanierController::class, 'destroy'])->name('panier.destroy');
 Route::post('/panier/valider', [CommandeController::class, 'store'])->name('panier.valider');    
 Route::middleware(['auth'])->group(function () {
-    Route::get('/profil', [ProfileController::class, 'show'])->name('profil.user'); 
+    Route::get('/profil', [ProfileController::class, 'show'])->name('profil.user');
+    Route::patch('/profil', [ProfileController::class, 'update'])->name('profile.update');
   });

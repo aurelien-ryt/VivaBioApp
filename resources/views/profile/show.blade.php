@@ -128,6 +128,47 @@
                     <p>{{ $user->email }}</p>
                 </div>
 
+                {{-- FORMULAIRE MODIFICATION PROFIL --}}
+                <form method="POST" action="{{ route('profile.update') }}" style="margin-top: 1.5rem; border-top: 1px solid #eee; padding-top: 1.5rem;">
+                    @csrf
+                    @method('PATCH')
+
+                    @if (session('status') === 'profile-updated')
+                        <p style="color: green; margin-bottom: 1rem;">Profil mis à jour avec succès.</p>
+                    @endif
+
+                    <div style="margin-bottom: 1rem;">
+                        <label for="nom" style="font-size: 0.8rem; color: var(--willow); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.3rem;">Nom (2 à 255 caractères)</label>
+                        <input type="text" id="nom" name="nom" value="{{ old('nom', $user->nom) }}" placeholder="Ex: Dupont" minlength="2" maxlength="255" required
+                            style="width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;">
+                        @error('nom') <p style="color: red; font-size: 0.85rem; margin-top: 0.3rem;">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <label for="prenom" style="font-size: 0.8rem; color: var(--willow); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.3rem;">Prénom (2 à 255 caractères)</label>
+                        <input type="text" id="prenom" name="prenom" value="{{ old('prenom', $user->prenom) }}" placeholder="Ex: Jean" minlength="2" maxlength="255" required
+                            style="width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;">
+                        @error('prenom') <p style="color: red; font-size: 0.85rem; margin-top: 0.3rem;">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div style="margin-bottom: 1rem;">
+                        <label for="email" style="font-size: 0.8rem; color: var(--willow); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.3rem;">Email</label>
+                        <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" placeholder="Ex: jean.dupont@email.com" required
+                            style="width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;">
+                        @error('email') <p style="color: red; font-size: 0.85rem; margin-top: 0.3rem;">{{ $message }}</p> @enderror
+                    </div>
+
+                    <button type="submit" style="
+                        background-color: var(--sage);
+                        color: white;
+                        border: none;
+                        padding: 0.7rem 1.4rem;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-size: 0.95rem;
+                    ">Enregistrer les modifications</button>
+                </form>
+
                 <form action="{{ route('users.logout') }}" method="POST" style="margin-top: 0.5rem;">
                     @csrf
                     <button type="submit" style="
